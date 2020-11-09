@@ -15,8 +15,8 @@ jobs:
           export VERSION=$(date +%s)
           docker login --username=yj19931029 --password=${{ secrets.REGISTRYPASSWORD }} registry.cn-hangzhou.aliyuncs.com
           docker build . --file Dockerfile --tag myweb:$VERSION
-          docker tag $(docker images |  grep myweb | awk '{print $3}') registry.cn-hangzhou.aliyuncs.com/godemo/myweb
-          docker push registry.cn-hangzhou.aliyuncs.com/godemo/myweb
+          docker tag $(docker images |  grep myweb | awk '{print $3}') registry.cn-hangzhou.aliyuncs.com/godemo/myweb:$VERSION registry.cn-hangzhou.aliyuncs.com/godemo/myweb
+          docker push registry.cn-hangzhou.aliyuncs.com/godemo/myweb:$VERSION
   deploy:
     runs-on: ubuntu-latest
     needs: build
