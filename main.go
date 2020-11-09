@@ -11,7 +11,7 @@ func main() {
 	})
 	r.GET("/user", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "user info",
+			"message": "user info v0.1",
 		})
 	})
 	r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
