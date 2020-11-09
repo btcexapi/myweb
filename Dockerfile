@@ -7,6 +7,7 @@ RUN go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux go build  -o bin/myweb main.go
 
 FROM alpine:3.7
+RUN mkdir /app
 COPY --from=builder /app/bin/myweb /app
 WORKDIR /app
 CMD "./myweb"
