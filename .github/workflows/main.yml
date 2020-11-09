@@ -28,4 +28,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: cd /root/learn/myweb && kubectl apply -f myweb.yaml && kubectl apply -f myweb.yaml
+          script: cd /root/learn/myweb && kubectl delete -f myweb.yaml && kubectl apply -f myweb.yaml && docker rmi $(docker images | grep "none" | awk '{print $3}')
